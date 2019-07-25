@@ -36,7 +36,7 @@
             do{
                 elem = elem.nextSibling;
             }while(elem && elem.nodeType != 1)
-            
+            //元素节点是1，文本节点是3
             //如果找到下一个兄弟节点 并且下一个兄弟的不是元素节点 接着循环    null(无效值)
             return elem;
         }
