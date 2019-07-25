@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #ti{
+            width: 200px;
+            height: 200px;
+            background: red;
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="ti">
+    </div>
+    <script>
+        var oDiv = document.getElementById("ti");
+        oDiv.onmousedown = function(e){
+            //e = e || window.event;
+            var odivx= e.clientX-oDiv.offsetLeft;
+            var odivy= e.clientY-oDiv.offsetTop;
+            oDiv.onmousemove= function(e){
+                //左
+                oDiv.style.left= e.clientX-odivx+"px";
+                oDiv.style.top= e.clientY-odivy+"px";
+                console.log(oDiv.offsetLeft)
+                if(oDiv.offsetLeft<=0){
+                    oDiv.style.left=0;
+                }
+             
+                //右
+                if(oDiv.offsetLeft > document.documentElement.clientWidth-oDiv.offsetWidth){
+                    oDiv.style.left = document.documentElement.clientWidth-oDiv.offsetWidth + 'px';
+                }
+                //上
+                if(oDiv.offsetTop <0 ){
+                    oDiv.style.top = 0;
+                }
+                
+                //下
+                if(oDiv.offsetTop > document.documentElement.clientHeight-oDiv.offsetHeight){
+                    oDiv.style.top = document.documentElement.clientHeight-oDiv.offsetHeight + 'px';
+                }
+            }
+        }
+        oDiv.onmouseup = function(){
+                oDiv.onmousemove= null;
+            }
+            
+        
+    </script>
+</body>
+</html>

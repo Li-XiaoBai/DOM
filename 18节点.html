@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">lki</div>
+    <ul id="ul1">
+        <li>1</li>
+        <li>22</li>
+        <li id="li3">333</li>
+    </ul>
+    <!-- 
+        节点遍历
+    nextSibling Node 指向后一个兄弟节点；如果这个节点就是最后一个兄弟节点，那么该值为null
+    previousSibling Node 指向前一个兄弟节点；如果这个节点就是第一个兄弟节点，那么该值为null
+    firstChild      指向在childNodes列表中的第一个节点
+    lastChild   指向在childNodes列表中的最后一个节点
+    children 
+    nodeType Node 节点的类型常量值之一
+    childNodes NodeList  所有子节点的列表
+    -->
+    <script>
+        var oDiv1=document.getElementById("div1");
+        var oDiv2=document.getElementById("ul1");
+        var oDiv3=document.getElementById("li3");
+        console.log(oDiv1.nextSibling);//ie下一个元素  标准浏览器返回"↵ 
+        console.log(oDiv1.firstChild.nodeType);
+        console.log(oDiv1.nextSibling);//输出回车和4个空格
+        console.log(oDiv2.nextElementSibling);//输出script节点的内容
+        console.log(oDiv1.nextElementSibling);//ie不支持
+        function next(elem){
+            do{
+                elem = elem.nextSibling;
+            }while(elem && elem.nodeType != 1)
+            
+            //如果找到下一个兄弟节点 并且下一个兄弟的不是元素节点 接着循环    null(无效值)
+            return elem;
+        }
+
+        console.log(next(oDiv2));
+        console.log(next(oDiv3));
+        console.log(oDiv2.children);
+        // 输出所有的子字节；
+        //类似与数组排列方式
+        // 0: li
+        // 1: li
+        // 2: li#li3
+        // length: 3
+        // li3: li#li3
+    </script>
+
+
+</body>
+</html>
