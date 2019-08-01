@@ -42,7 +42,7 @@
         }
         Leaf.prototype.fall = function(){
             var that = this;
-            setTimeout(function(){//延迟
+             (function(){//延迟
                 var timer = setInterval(function(){ //定时器中this指向Window
                 if(that.img.offsetTop >= screenHeight-that.img.offsetHeight){ //判断是都到达底部
                     clearInterval(timer);
